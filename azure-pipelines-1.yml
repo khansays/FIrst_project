@@ -8,19 +8,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-- task: PythonScript@0
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      def test_1():
-      
-          assert 1==2
-      
-      
-      def test_2():
-          assert 2==2
-    pythonInterpreter: 'pytest'
-    failOnStderr: true
+
 strategy:
   matrix:
 
@@ -43,3 +31,10 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath'
+    scriptPath: 'C:\Users\e9003400\PycharmProjects\EBI-QA-Automation-development\pythonProject\tests\test_1.py'
+    pythonInterpreter: 'pytest'
+    failOnStderr: true
